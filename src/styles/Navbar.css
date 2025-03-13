@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .navbar {
-    @apply border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700;
+    @apply border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700 shadow-sm shadow-gray-400 dark:shadow-gray-700;
 
     & .main-container {
         @apply max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4;

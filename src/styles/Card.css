@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+:root {
+    --bg-card: #f3f4f6;
+    --card-border: #1e2939;
+    --card-color: #1e2939;
+    --border-radius: 8px;
+}
+
+.card {
+    @apply h-72 w-60 hover:shadow-2xl shadow-md pt-4 pb-3 px-2 bg-[var(--bg-card)] rounded-sm border-0 border-[var(--card-border)] transition duration-200 ease-in-out;
+
+    & .card-header {
+        @apply relative;
+
+        & .card-image {
+            @apply h-40 overflow-hidden w-full mb-3 border-b-2 border-white;
+
+            & .image {
+                @apply block object-cover rounded-t-sm hover:scale-105 transition-transform duration-200 ease-in-out
+            }
+
+            & .card-btn {
+                @apply absolute flex items-center justify-center bottom-0 cursor-pointer w-full mb-1 bg-transparent py-1 px-2;
+
+                & .btn {
+                    @apply relative bg-white p-2 rounded-full font-bold text-2xl hover:text-white hover:bg-black transition duration-200 ease-in-out;
+                }
+            }
+        }
+    }
+
+    & .card-body {
+
+        & .title {
+            @apply w-full p-2 capitalize font-semibold;
+        }
+
+        & .price {
+            @apply py-1 px-2 w-fit mt-1;
+        }
+    }
+
+}
