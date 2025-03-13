@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+.container-details {
+    @apply grid sm:grid-cols-1 md:grid-cols-3 gap-4;
+
+    & .product-img {
+        @apply rounded-md bg-white px-2 py-3 col-span-2
+    }
+
+    & .product-details {
+
+        & .title {
+            @apply w-full text-2xl p-2 capitalize font-bold;
+        }
+
+        & .price {
+            @apply w-full text-2xl p-2 capitalize font-bold;
+        }
+
+        & .category {
+            @apply w-full p-2 capitalize;
+
+            & .category-label {}
+
+            & .text {
+                @apply text-xl font-bold;
+            }
+        }
+
+        & .description {
+            @apply w-full p-2 capitalize;
+
+            & .description-label {}
+
+            & .text {
+                @apply text-xl font-bold transition-all duration-200 ease-in-out;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                line-height: 1.6;
+
+                opacity: 0.5;
+
+                &:hover {
+                    -webkit-line-clamp: initial;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}

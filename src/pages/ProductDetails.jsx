@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import Card from "../components/Card";
 import { useEffect, useState } from "react";
+import "../styles/ProductDetails.css";
 
 function ProductDetails() {
   const { productId } = useParams();
@@ -40,13 +41,42 @@ function ProductDetails() {
   //   }
   return (
     <>
-      <h1>Product Details</h1>
+      <div className="container-details">
+        <div className="product-img">
+          <img
+            className="w-full h-80 object-cover"
+            src={product.images}
+            alt={product.title}
+          />
+        </div>
+        <div className="product-details">
+          {product.title && (
+            <div className="title">
+              <h1 className="text">{product.title}</h1>
+            </div>
+          )}
+          {product.price && (
+            <div className="price">
+              <p className="text">${product.price}</p>
+            </div>
+          )}
+          {product.category && (
+            <div className="category">
+              <label className="category-label">Category:</label>
+              <p className="text">{product.category.name}</p>
+            </div>
+          )}
+          {product.description && (
+            <div className="description">
+              <label className="description-label">Description:</label>
+              <p className="text text-xl font-bold">{product.description}</p>
+            </div>
+          )}
+        </div>
+      </div>
+      {/* <h1>Product Details</h1>
       <h2>Product Id: #{productId}</h2>
-      <Card key={product.id} product={product} isBtnShow={false} />
-      {/* {Array.isArray(products) &&
-        products.map((product) => {
-          return <Card key={product.id} product={product} isBtnShow={false} />;
-        })} */}
+      <Card key={product.id} product={product} isBtnShow={false} /> */}
     </>
   );
 }
