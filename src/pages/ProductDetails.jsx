@@ -1,53 +1,46 @@
 import { useParams } from "react-router-dom";
 import Card from "../components/Card";
-import { useEffect, useState } from "react";
 import "../styles/ProductDetails.css";
+import { useQuery } from "@tanstack/react-query";
+import { apiUrl } from "../apies/Api";
 
 function ProductDetails() {
   const { productId } = useParams();
-  const [product, setProduct] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  //   let param = useParams();
-  //   const apiUrl = `https://api.escuelajs.co/api/v1/products/${param.productId}`;
-
-  const getProductDetails = async () => {
-    const apiUrl = `https://api.escuelajs.co/api/v1/products/${productId}`;
-    setIsLoading(true);
-    await fetch(apiUrl)
-      .then((res) => res.json())
-      .then((data) => setProduct(data))
-      .catch((error) => console.error("Error fetching product details:", error))
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
-  useEffect(() => {
-    getProductDetails();
-  }, [productId]);
+  const { data: product, isLoading } = useQuery({
+    queryKey: ["product"],
+    queryFn: () => fetch(`${apiUrl}/${productId}`).then((res) => res.json()),
+  });
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
-  if (!product) {
-    return <div>Product not found</div>;
-  }
+  // const [product, setProduct] = useState([]);
+  // const [isLoading, setIsLoading] = useState(false);
+  //   let param = useParams();
+  //   const apiUrl = `https://api.escuelajs.co/api/v1/products/${param.productId}`;
 
-  //   console.log("Products data:", products); // Debugging: Check if products is an array
+  // const getProductDetails = async () => {
+  //   const apiUrl = `https://fakestoreapi.com/products/${productId}`;
+  //   setIsLoading(true);
+  //   await fetch(apiUrl)
+  //     .then((res) => res.json())
+  //     .then((data) => setProduct(data))
+  //     .catch((error) => console.error("Error fetching product details:", error))
+  //     .finally(() => {
+  //       setIsLoading(false);
+  //     });
+  // };
 
-  //   if (!Array.isArray(products)) {
-  //     return <h2>Loading products...</h2>; // ✅ Prevent mapping on non-array values
-  //   }
+  // useEffect(() => {
+  //   getProductDetails();
+  // }, [productId]);
+
   return (
     <>
       <div className="container-details">
         <div className="product-img">
-          <img
-            className="w-full h-80 object-cover"
-            src={product.images}
-            alt={product.title}
-          />
+          <img className="" src={product.image} alt={product.title} />
         </div>
         <div className="product-details">
           {product.title && (
@@ -63,7 +56,7 @@ function ProductDetails() {
           {product.category && (
             <div className="category">
               <label className="category-label">Category:</label>
-              <p className="text">{product.category.name}</p>
+              <p className="text">{product.category}</p>
             </div>
           )}
           {product.description && (

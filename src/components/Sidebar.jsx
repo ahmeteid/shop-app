@@ -38,12 +38,9 @@ const Sidebar = () => {
         {menuItems.map((item) => (
           <li
             key={item.name}
-            className={classNames(
-              "w-full cursor-pointer hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-white rounded-md transition-colors duration-200 ease-in-out",
-              {
-                "bg-gray-700": pathname === item.link,
-              }
-            )}
+            className={classNames("side-item", {
+              "bg-gray-700": pathname === item.link,
+            })}
           >
             <Link to={item.link} className="w-full flex items-center p-2">
               <span className={`${item.color} p-2 rounded-md mr-3`}>

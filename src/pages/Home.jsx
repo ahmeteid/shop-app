@@ -1,31 +1,43 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "../components/Card";
+import { useQuery } from "@tanstack/react-query";
+import { apiUrl } from "../apies/Api";
 function Home() {
-  const [products, setProducts] = useState([]);
+  const { data, isLoading } = useQuery({
+    queryKey: ["products"],
+    queryFn: () => fetch(`${apiUrl}`).then((res) => res.json()),
+  });
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  // const [products, setProducts] = useState([]);
 
   // const apiUrl = "https://fakestoreapi.com/products";
-  const apiUrl = "https://api.escuelajs.co/api/v1/products";
 
-  const getProducts = () => {
-    fetch(apiUrl)
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  };
+  // const getProducts = () => {
+  //   const apiUrl = "https://fakestoreapi.com/products";
+  //   fetch(apiUrl)
+  //     .then((res) => res.json())
+  //     .then((data) => setProducts(data));
+  // };
 
-  useEffect(() => {
-    getProducts();
-  }, []);
+  // useEffect(() => {
+  //   getProducts();
+  // }, []);
   return (
     <div className="container">
-      <div className="row grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        {products.map((product) => {
-          return (
-            <div className="col" key={product.id}>
-              <Card product={product} isBtnShow={true} />
-            </div>
-          );
-        })}
+      <div className="row grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        {data &&
+          data?.map((product) => {
+            return (
+              <div className="col" key={product.id}>
+                <Card product={product} isBtnShow={true} />
+              </div>
+            );
+          })}
       </div>
     </div>
   );

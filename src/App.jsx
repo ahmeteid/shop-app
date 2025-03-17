@@ -8,33 +8,37 @@ import Pricing from "./pages/Pricing";
 import Contact from "./pages/Contact";
 import Settings from "./pages/Settings";
 import ProductDetails from "./pages/ProductDetails";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
+  const queryClient = new QueryClient();
   return (
-    <>
-      <div className="main-container flex">
-        <Sidebar />
-        <div className="flex-1">
-          <Navbar />
-          <div className="p-4">
-            <Routes>
-              {/* <Route path="/" exact element={<Home />}>
+    <QueryClientProvider client={queryClient}>
+      <>
+        <div className="main-container flex">
+          <Sidebar />
+          <div className="flex-1">
+            <Navbar />
+            <div className="p-4">
+              <Routes>
+                {/* <Route path="/" exact element={<Home />}>
                 <Route exact path=":productId" element={<ProductDetails />} />
               </Route> */}
-              <Route path="/" element={<Outlet />}>
-                <Route path="/" element={<Home />} />
-                <Route path="/:productId" element={<ProductDetails />} />
-              </Route>
-              <Route path="/services" element={<Services />} />
-              <Route path="/pricing" element={<Pricing />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/settings" element={<Settings />} />
-              {/* Add more routes here */}
-            </Routes>
+                <Route path="/" element={<Outlet />}>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/:productId" element={<ProductDetails />} />
+                </Route>
+                <Route path="/services" element={<Services />} />
+                <Route path="/pricing" element={<Pricing />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/settings" element={<Settings />} />
+                {/* Add more routes here */}
+              </Routes>
+            </div>
           </div>
         </div>
-      </div>
-    </>
+      </>
+    </QueryClientProvider>
   );
 }
 

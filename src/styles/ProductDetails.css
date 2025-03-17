@@ -4,11 +4,14 @@
     @apply grid sm:grid-cols-1 md:grid-cols-3 gap-4;
 
     & .product-img {
-        @apply rounded-md bg-white px-2 py-3 col-span-2
+        @apply rounded-md h-95 bg-white px-2 py-3 col-span-2 overflow-hidden;
+
+        & img {
+            @apply w-full h-full object-contain;
+        }
     }
 
     & .product-details {
-
         & .title {
             @apply w-full text-2xl p-2 capitalize font-bold;
         }

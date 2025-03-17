@@ -8,7 +8,7 @@ function Card({ product, isBtnShow }) {
       <Link className="card inline-block" to={`/${product.id}`}>
         <div className="card-header">
           <div className="card-image">
-            <img className="image" src={product.images} alt={product.title} />
+            <img className="image" src={product.image} alt={product.title} />
             {/* {product.title && (
               <div className="title w-full bg-blue-300 absolute bottom-1 p-2 capitalize text-white font-bold">
                 <h1 className="text">{product.title.slice(0, 15)}...</h1>
