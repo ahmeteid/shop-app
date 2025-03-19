@@ -1,13 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Card from "../components/Card";
-import { useQuery } from "@tanstack/react-query";
-import { apiUrl } from "../apies/Api";
+// import { useQuery } from "@tanstack/react-query";
+// import { apiUrl } from "../apies/Api";
+import { ProductsContext } from "../context/ProductsContext";
 function Home() {
-  const { data, isLoading } = useQuery({
-    queryKey: ["products"],
-    queryFn: () => fetch(`${apiUrl}`).then((res) => res.json()),
-  });
+  // const { data, isLoading } = useQuery({
+  //   queryKey: ["products"],
+  //   queryFn: () => fetch(`${apiUrl}`).then((res) => res.json()),
+  // });
+
+  const { data, isLoading } = useContext(ProductsContext);
 
   if (isLoading) {
     return <div>Loading...</div>;
