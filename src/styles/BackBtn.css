@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.back-btn {
+    @apply absolute top-0 text-2xl bg-gray-300 left-0 p-2 rounded-md hover:scale-105 cursor-pointer hover:text-blue-500 transition-all duration-200 ease-in-out;
+}

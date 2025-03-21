@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+.contact-page {
+
+    @apply relative capitalize p-4 mx-auto max-w-xl bg-white;
+
+    & .title-text {
+        @apply text-3xl text-slate-900 font-semibold text-center;
+    }
+
+    & .form-content {
+        @apply mt-8 space-y-5;
+
+        & .label-text {
+            @apply text-sm text-slate-800 font-bold mb-2 block;
+        }
+
+        & .input-text {
+            @apply shadow focus:shadow-2xl rounded-sm w-full py-2.5 px-4 text-slate-800 bg-gray-100 border-0 focus:outline-1 outline-slate-900 focus:bg-transparent text-sm transition-all;
+        }
+
+        & .message {
+            @apply shadow focus:shadow-2xl rounded-sm resize-none w-full px-4 text-slate-800 bg-gray-100 outline-0 focus:outline-1 outline-slate-900 focus:bg-transparent text-sm pt-3 transition-all;
+        }
+
+        & .form-btn {
+            @apply shadow hover:shadow-2xl cursor-pointer !mt-8 text-white bg-slate-900 hover:bg-slate-800 tracking-wide text-2xl font-semibold hover:text-gray-300 px-4 py-2 w-full outline-none;
+        }
+    }
+
+}

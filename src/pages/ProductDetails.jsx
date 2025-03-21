@@ -6,6 +6,7 @@ import "../styles/ProductDetails.css";
 import { IoMdArrowBack } from "react-icons/io";
 import { ProductsContext } from "../context/ProductsContext";
 import { useContext } from "react";
+import BackBtn from "../components/BackBtn";
 
 function ProductDetails() {
   let { productId } = useParams();
@@ -20,9 +21,17 @@ function ProductDetails() {
     return <div>Loading...</div>;
   }
 
+  if (!products) {
+    return <div>No products available</div>;
+  }
+
   const product = products.find(
     (product) => product.id === parseInt(productId)
   );
+
+  if (!product) {
+    return <div>Product not found</div>;
+  }
 
   // const [product, setProduct] = useState([]);
   // const [isLoading, setIsLoading] = useState(false);
@@ -48,9 +57,7 @@ function ProductDetails() {
   return (
     <>
       <div className="container-details">
-        <Link to="/" className="back-btn">
-          <IoMdArrowBack />
-        </Link>
+        <BackBtn />
         <div className="product-img">
           <img className="" src={product.image} alt={product.title} />
         </div>
