@@ -42,7 +42,7 @@ const Sidebar = () => {
               "bg-gray-700": pathname === item.link,
             })}
           >
-            <Link to={item.link} className="w-full flex items-center p-2">
+            <Link to={item.link} className="item w-full flex items-center p-2">
               <span className={`${item.color} p-2 rounded-md mr-3`}>
                 <item.icon className="w-5 h-5" aria-hidden="true" />
               </span>
